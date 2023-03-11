@@ -39,7 +39,7 @@ loss_cfg:
 model_cfg:
   model: GaitGL
   channels: [32, 64, 128]
-  class_num: 1008
+  class_num: 500
 
 optimizer_cfg:
   lr: 1.0e-4

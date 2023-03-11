@@ -86,8 +86,8 @@ class DataSet(tordata.Dataset):
 
         def log_pid_list(pid_list):
             if len(pid_list) >= 3:
-                msg_mgr.log_info('[%s, %s, ..., %s]' %
-                                 (pid_list[0], pid_list[1], pid_list[-1]))
+                msg_mgr.log_info('[%s, %s, ..., %s]num classes: %s' %
+                                 (pid_list[0], pid_list[1], pid_list[-1], len(pid_list)))
             else:
                 msg_mgr.log_info(pid_list)
 
