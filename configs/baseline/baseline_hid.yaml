@@ -10,7 +10,7 @@ evaluator_cfg:
   restore_hint: 60000
   save_name: Baseline
   eval_func: HID_submission
-  rerank: False
+  rerank: true
   sampler:
     batch_shuffle: false
     batch_size: 8
