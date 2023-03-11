@@ -20,6 +20,7 @@ evaluator_cfg:
   transform:
     - type: BaseSilCuttingTransform
       img_w: 64
+      p: 0.5
 
 loss_cfg:
   - loss_term_weight: 1.0
@@ -97,3 +98,4 @@ trainer_cfg:
   transform:
     - type: BaseSilCuttingTransform
       img_w: 64
+      p: 0.5
