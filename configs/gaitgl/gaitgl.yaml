@@ -21,7 +21,7 @@ evaluator_cfg:
     type: InferenceSampler
   transform:
     - type: BaseSilCuttingTransform
-      img_w: 128
+      img_w: 64
       p: 0.5
 
 loss_cfg:
@@ -73,5 +73,5 @@ trainer_cfg:
     type: TripletSampler
   transform:
     - type: BaseSilCuttingTransform
-      img_w: 128
+      img_w: 64
       p: 0.5

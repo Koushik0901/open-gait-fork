@@ -81,7 +81,7 @@ def get_transform(trf_cfg=None, training=True):
             BaseSilCuttingTransform(),
             T.Lambda(lambda x: x.unsqueeze(1)),
             T.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5)),
-            T.RandomAdjustSharpness(sharpness_factor=2, p=trf_cfg["p"]),
+            T.RandomAdjustSharpness(sharpness_factor=2, p=0.5),
             T.Lambda(lambda x: x.squeeze()),
         ])
         return [transform]
