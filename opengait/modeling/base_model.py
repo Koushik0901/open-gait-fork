@@ -299,15 +299,15 @@ class BaseModel(MetaModel, nn.Module):
             tuple: training data including inputs, labels, and some meta data.
         """
         seqs_batch, labs_batch, typs_batch, vies_batch, seqL_batch = inputs
-        print(self.engine_cfg['transform'])
+        # print(self.engine_cfg['transform'])
         trf_cfgs = self.engine_cfg['transform']
-        print("trf_cfgs", trf_cfgs, len(seqs_batch))
+        # print("trf_cfgs", trf_cfgs, len(seqs_batch))
         seq_trfs = get_transform(trf_cfgs, bool(self.training))
         if len(seqs_batch) != len(seq_trfs):
             raise ValueError(
                 "The number of types of input data and transform should be same. But got {} and {}".format(len(seqs_batch), len(seq_trfs)))
         requires_grad = bool(self.training)
-        seqs = [torch.stack([trf(torch.tensor(fra, requires_grad=requires_grad)) for fra in seq], dim=0).float()
+        seqs = [torch.stack([trf(torch.tensor(fra, requires_grad=requires_grad)) for fra in seq], dim=0).float().to(self.device)
                 for trf, seq in zip(seq_trfs, seqs_batch)]
 
         typs = typs_batch
