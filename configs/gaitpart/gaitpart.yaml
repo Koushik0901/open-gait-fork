@@ -1,13 +1,13 @@
 data_cfg:
-  dataset_name: CASIA-E
+  dataset_name: CASIA-B
   dataset_root: CASIA-E-pkl
   dataset_partition: ./datasets/HID/HID.json
-  num_workers: 1
+  num_workers: 2
   remove_no_gallery: false
-  test_dataset_name: CASIA-E
+  # test_dataset_name: CASIA-E
 
 evaluator_cfg:
-  enable_float16: false
+  enable_float16: true
   restore_ckpt_strict: true
   restore_hint: 120000
   save_name: GaitPart
@@ -16,6 +16,11 @@ evaluator_cfg:
     sample_type: all_ordered
     type: InferenceSampler
   metric: euc # cos
+  eval_func: HID_submission
+  transform:
+    - type: BaseSilCuttingTransform
+      img_w: 64
+      p: 0.5
 
 loss_cfg:
   loss_term_weight: 1.0
@@ -78,3 +83,7 @@ trainer_cfg:
     frames_skip_num: 10
     sample_type: fixed_ordered
     type: TripletSampler
+  transform:
+    - type: BaseSilCuttingTransform
+      img_w: 64
+      p: 0.5

@@ -307,7 +307,7 @@ class BaseModel(MetaModel, nn.Module):
             raise ValueError(
                 "The number of types of input data and transform should be same. But got {} and {}".format(len(seqs_batch), len(seq_trfs)))
         requires_grad = bool(self.training)
-        seqs = [torch.stack([trf(torch.tensor(fra, requires_grad=requires_grad)) for fra in seq], dim=0).float().to(self.device)
+        seqs = [torch.stack([trf(torch.tensor(fra, dtype=torch.float32, requires_grad=requires_grad)) for fra in seq], dim=0).to(self.device)
                 for trf, seq in zip(seq_trfs, seqs_batch)]
 
         typs = typs_batch

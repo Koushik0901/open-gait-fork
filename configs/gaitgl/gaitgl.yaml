@@ -3,7 +3,7 @@ data_cfg:
   dataset_name: CASIA-B
   dataset_root: /kaggle/input/gaitdataset/CASIA-E-pkl/CASIA-E-pkl
   dataset_partition: ./datasets/HID/HID.json
-  num_workers: 1
+  num_workers: 2
   remove_no_gallery: false
   #test_dataset_name: CASIA-E
 
