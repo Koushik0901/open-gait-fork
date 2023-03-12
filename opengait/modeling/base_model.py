@@ -426,7 +426,6 @@ class BaseModel(MetaModel, nn.Module):
                     model.msg_mgr.log_info("Running test...")
                     model.eval()
                     result_dict = BaseModel.run_test(model)
-                    print(result_dict)
                     model.train()
                     if model.cfgs['trainer_cfg']['fix_BN']:
                         model.fix_BN()
@@ -443,7 +442,7 @@ class BaseModel(MetaModel, nn.Module):
         rank = torch.distributed.get_rank()
         with torch.no_grad():
             info_dict = model.inference(rank)
-        print(rank, info_dict)
+        # print(rank, info_dict)
         if rank == 0:
             loader = model.test_loader
             label_list = loader.dataset.label_list
